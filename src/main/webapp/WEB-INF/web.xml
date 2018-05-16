@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd "
+         version="2.5">
 
-    <display-name>layerCake</display-name>
     <context-param>
         <param-name>webAppRootKey</param-name>
         <param-value>lcWebApp.root</param-value>
@@ -16,12 +13,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <!--</context-param>-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:spring-servlet.xml</param-value>
+        <param-value>classpath:spring-servlet.xml</param-value>
     </context-param>
-    
+
     <!--<listener>-->
         <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>-->
     <!--</listener>-->
+    <!-- 监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>springUtf8Encoding</filter-name>
@@ -35,6 +36,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
             <param-value>true</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>springUtf8Encoding</filter-name>
         <url-pattern>/*</url-pattern>
@@ -50,14 +52,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>spring-servlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
-    <!-- 监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
     
 
 </web-app>

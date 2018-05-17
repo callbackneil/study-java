@@ -26,4 +26,6 @@ public class TestDomain implements Serializable {
     public void setField(String field) {
         this.field = field;
     }
+
+
 }

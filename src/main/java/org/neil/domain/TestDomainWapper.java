@@ -14,6 +14,7 @@ public class TestDomainWapper {
     }
 
     public void setTestDomain(TestDomain testDomain) {
+
         this.testDomain = testDomain;
     }
 }

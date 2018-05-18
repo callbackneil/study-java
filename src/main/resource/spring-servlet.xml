@@ -32,14 +32,15 @@
 	</mvc:annotation-driven>
 
 
-	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<bean id="customEditorConfigurer"
+		  class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">
 			<map>
-				<entry key="org.neil.domain.TestDomain">
-
-					<bean class="org.neil.util.TestDomainWapperEditor"/>
+				<entry key="org.neil.domain.TestDomain" value="org.neil.util.TestDomainWapperEditor">
 				</entry>
 			</map>
 		</property>
 	</bean>
+
+	<import resource="spring-bean.xml"/>
 </beans>

@@ -22,10 +22,14 @@ public class TestController {
         this.testDomainWapper = testDomainWapper;
     }
 
-    @RequestMapping(value = "argumentResolver",method = RequestMethod.GET)
-    public Object argumentResolverController(){
-        return this.testDomainWapper;
+    @RequestMapping(value = "test1", method = RequestMethod.GET)
+    public Object argumentResolverController(TestDomainWapper testDomainWapper) {
+        return testDomainWapper;
     }
 
+    @RequestMapping(value = "test2", method = RequestMethod.GET)
+    public Object argumentResolverController2() {
+        return this.testDomainWapper;
+    }
 
 }

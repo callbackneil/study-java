@@ -7,17 +7,13 @@ package org.neil.domain;
 public class TestDomainWapper {
 
     private Long       id;
-    private TestDomain               testDomain;
+    private TestDomain testDomain;
 
     public void setId(Long id) {
         this.id = id;
     }
 
     public Long getId() {
-
-
-
-
 
         return id;
     }

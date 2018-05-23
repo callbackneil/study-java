@@ -1,6 +1,7 @@
 package org.neil.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author neil
@@ -10,6 +11,15 @@ public class TestDomain implements Serializable {
 
     private Integer id;
     private String field;
+    private List<String> idList;
+
+    public List<String> getIdList() {
+        return idList;
+    }
+
+    public void setIdList(List<String> idList) {
+        this.idList = idList;
+    }
 
     public Integer getId() {
         return id;
@@ -27,5 +37,8 @@ public class TestDomain implements Serializable {
         this.field = field;
     }
 
-
+    @Override
+    public String toString() {
+        return "TestDomain{" + "id=" + id + ", field='" + field + '\'' + ", idList=" + idList + '}';
+    }
 }

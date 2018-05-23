@@ -15,22 +15,23 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="org.neil" />
-	<context:annotation-config />
+    <context:component-scan base-package="org.neil"/>
+    <context:annotation-config/>
 
-	<mvc:annotation-driven>
-        <!--<mvc:message-converters register-defaults="true">-->
-        <!--<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">-->
-        <!--<property name="supportedMediaTypes">-->
-        <!--<list>-->
-        <!--<value>application/json;charset=UTF-8</value>-->
-        <!--</list>-->
-        <!--</property>-->
-        <!--<property name="fastJsonConfig" ref="fastJsonConfig">-->
-        <!--</property>-->
-        <!--</bean>-->
-        <!--</mvc:message-converters>-->
-	</mvc:annotation-driven>
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="fastJsonHttpMessageConverter"
+                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="fastJsonConfig" ref="fastJsonConfig">
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
 
@@ -38,14 +39,14 @@
 
 
     <bean id="customEditorConfigurer"
-		  class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="customEditors">
-			<map>
-				<entry key="org.neil.domain.TestDomain" value="org.neil.util.TestDomainWapperEditor">
-				</entry>
-			</map>
-		</property>
-	</bean>
+          class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="org.neil.domain.TestDomain" value="org.neil.util.TestDomainWapperEditor">
+                </entry>
+            </map>
+        </property>
+    </bean>
 
-	<import resource="spring-bean.xml"/>
+    <import resource="spring-bean.xml"/>
 </beans>

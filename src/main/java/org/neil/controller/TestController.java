@@ -29,6 +29,7 @@ public class TestController {
 
     @RequestMapping(value = "test2", method = RequestMethod.GET)
     public Object argumentResolverController2() {
+        System.out.println("1234");
         return this.testDomainWapper;
     }
 

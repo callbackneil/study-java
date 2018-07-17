@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.neil.dao.PCDao">
+
+
+    <select id="getMAXId" resultType="java.lang.String">
+      SELECT Max(pcId) from pc
+    </select>
+
+    <insert id="insertPC" parameterType="org.neil.domain.PC" useGeneratedKeys="true" keyProperty="pcId">
+        INSERT INTO pc
+        VALUES
+        (#{pcId},#{pcName},#{pcPrice})
+    </insert>
+
+
+    <select id="pageQueryPCList" resultType="org.neil.domain.PC">
+        SELECT pcId,pcName,pcPrice from pc
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

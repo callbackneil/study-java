@@ -28,10 +28,11 @@ public class TestController {
     }
 
     @RequestMapping(value = "test2", method = RequestMethod.GET)
-    public Object argumentResolverController2() {
+    public Object argumentResolverController2() throws Exception {
         System.out.println("1234");
         System.out.println("test");
-        return this.testDomainWapper;
+        throw new Exception("");
+        //        return this.testDomainWapper;
     }
 
 

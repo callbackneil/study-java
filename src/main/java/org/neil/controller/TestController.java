@@ -31,6 +31,7 @@ public class TestController {
     public Object argumentResolverController2() throws Exception {
         System.out.println("1234");
         System.out.println("test");
+        System.out.println("test");
         throw new Exception("");
         //        return this.testDomainWapper;
     }

@@ -18,6 +18,6 @@ public class PCServiceTest extends BaseTest {
     @Test
     public void pageTest() {
         Page<PC> pcs = pcService.pageQueryPCList();
-        System.out.println(pcs);
+        System.out.println(pcs.getTotal());
     }
 }

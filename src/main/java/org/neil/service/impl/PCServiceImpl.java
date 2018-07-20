@@ -6,6 +6,7 @@ import org.neil.service.PCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 
 /**
  * @author neil
@@ -19,7 +20,7 @@ public class PCServiceImpl implements PCService {
 
     @Override
     public Page<PC> pageQueryPCList() {
-        //        PageHelper.startPage(1,5);
+        PageHelper.startPage(0, 0);
         Page<PC> pageList = (Page<PC>) pcDao.pageQueryPCList();
         return pageList;
     }

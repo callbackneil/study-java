@@ -18,7 +18,6 @@
         SELECT pcId,pcName,pcPrice from pc
     </select>
 
-
 </mapper>
 
 

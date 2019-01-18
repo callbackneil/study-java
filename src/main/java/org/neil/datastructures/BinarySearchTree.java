@@ -10,6 +10,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private BinaryNode<T> root;
 
 
+
     /**
      * 从树中删除元素t
      * @param t
@@ -51,7 +52,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             }
 
             if(node.right!=null && node.left!=null){
-                node.t = findMin(node.right);
+                node.t = findMin(node.right).t;
                 node.right = remove(node.t,node.right);
                 return node;
             }
@@ -116,22 +117,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * 获取树中最大元素
      * @return
      */
-    public T findMax(){
-        return findMin(root);
+    public T findMaxValue(){
+        return findMax(root).t;
     }
+
     /**
-     * 获取节点node最大元素
+     * 获取树中最大节点
+     * @return
+     */
+    public BinaryNode<T> findMaxNode(){
+        return findMax(root);
+    }
+
+    /**
+     * 获取节点node最大节点
      * @param node
      * @return
      */
-    private T findMax(BinaryNode<T> node){
+    private BinaryNode<T> findMax(BinaryNode<T> node){
         if(node == null){
             return null;
         }
         if(node.right == null){
-            return node.t;
+            return node;
         }
-        return findMin(node.right);
+        return findMax(node.right);
     }
 
 
@@ -140,20 +150,28 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * 获取树中最小元素
      * @return
      */
-    public T findMin(){
+    public T findMinValue(){
+        return findMin(root).t;
+    }
+
+    /**
+     * 获取树中最小元素
+     * @return
+     */
+    public BinaryNode<T> findMinNode(){
         return findMin(root);
     }
     /**
-     * 获取节点node最小元素
+     * 获取节点node最小元素所在节点
      * @param node
      * @return
      */
-    private T findMin(BinaryNode<T> node){
+    private BinaryNode<T> findMin(BinaryNode<T> node){
         if(node == null){
             return null;
         }
         if(node.left == null){
-            return node.t;
+            return node;
         }
         return findMin(node.left);
     }

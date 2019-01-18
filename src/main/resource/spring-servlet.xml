@@ -43,6 +43,17 @@
         </property>
     </bean>
 
+    <!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为1MB -->
+        <property name="maxUploadSize">
+            <value>1048576</value>
+        </property>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+
     <import resource="spring-bean.xml"/>
     <import resource="spring-datasource.xml"/>
 </beans>

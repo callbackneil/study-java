@@ -1,17 +1,18 @@
 package org.neil.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.neil.domain.TestDomainWapper;
 import org.neil.domain.UpdateChildLevelVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -80,6 +81,15 @@ public class TestController {
         System.out.println(list);
         return "";
     }
+
+    @RequestMapping(value = "upload", method = RequestMethod.POST)
+    public Object upload(@PathVariable("file") MultipartFile file,HttpServletRequest request) {
+        System.out.println(file);
+        return "";
+    }
+
+
+
 
 
 }

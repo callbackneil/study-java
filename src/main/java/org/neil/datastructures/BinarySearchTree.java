@@ -1,5 +1,9 @@
 package org.neil.datastructures;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 二叉查找树
  * @author neil
@@ -7,8 +11,386 @@ package org.neil.datastructures;
  */
 public class BinarySearchTree<T extends Comparable<T>> {
 
+    public static final int PRE = -1;
+    /** 中序遍历 */
+    public static final int MID = 0;
+    /** 后序遍历 */
+    public static final int POST = 1;
+
     private BinaryNode<T> root;
 
+
+    /**
+     * 获取高度
+     * @return
+     */
+    public boolean isFBT(){
+        return isFBT(root);
+    }
+
+    private boolean isFBT(BinaryNode<T> node) {
+        if(node == null){
+         return true;
+        }
+        boolean result = getHeight(node.left) == getHeight(node.right);
+        return result && isFBT(node.left) && isFBT(node.right);
+    }
+
+
+    /**
+     * 是不是完全二叉树
+     *  1、如果存在第一个不完全（无右 或者 无左右）节点，只要后续节点有子节点 就不是完全二叉树
+     *  2、不存在，找到，
+     * @return
+     */
+    public boolean isCBT(){
+        if(root == null){
+            return false;
+        }
+        ArrayDeque<BinaryNode<T>> queue = new ArrayDeque<>();
+        queue.offerFirst(root);
+        // 默认不是第一个不完全的节点
+        boolean firstLast = false;
+        while (!queue.isEmpty()){
+            BinaryNode<T> node = queue.pollLast();
+            if(firstLast){
+                if(node.right != null || node.left != null){
+                    return false;
+                }
+            }else {
+                if(node.left != null && node.right != null){
+                    queue.offerFirst(node.left);
+                    queue.offerFirst(node.right);
+                }else if(node.right != null ){
+                    return false;
+                }else if(node.left != null ){
+                    queue.offerFirst(node.left);
+                    firstLast = true;
+                }else {
+                    firstLast = true;
+                }
+            }
+        }
+
+        return true;
+    }
+
+
+
+
+    /**
+     * 查找最小祖先节点 通过节点左右子树判断
+     */
+    public T getLCA2(BinaryNode<T> node1,BinaryNode<T> node2){
+        return getLCA2(root,node1,node2).t;
+    }
+
+    private BinaryNode<T> getLCA2(BinaryNode<T> node, BinaryNode<T> node1, BinaryNode<T> node2) {
+        if(node == null || node1 == null||node2 == null){
+            return null;
+        }
+
+        if(node == node1 || node == node2){
+            return node;
+        }
+
+        // 判断node1 node2在node的位置
+        BinaryNode<T> left = getLCA2(node.left, node1, node2);
+        BinaryNode<T> right = getLCA2(node.right, node1, node2);
+        // 如果都不为空 表示node1 node2分属于左右子树
+        if(left != null && right != null){
+            return node;
+        }
+        // 否则返回包含node1 node2的非空节点
+        return left == null?right:left;
+    }
+    /**
+     * 查找最小祖先节点 通过节点元素判断
+     */
+    public T getLCA(BinaryNode<T> node1,BinaryNode<T> node2){
+        return getLCA(root,node1,node2).t;
+    }
+
+
+    private BinaryNode<T> getLCA(BinaryNode<T> node, BinaryNode<T> node1, BinaryNode<T> node2) {
+        if(null == root){
+            return null;
+        }
+        T t = node.t;
+        T t1 = node1.t;
+        T t2 = node2.t;
+        int result1 = t.compareTo(t1);
+        int result2 = t.compareTo(t2);
+        if(result1 != result2 || result2 == 0){
+            return node;
+        }
+
+        if(result1 > 0){
+            return getLCA(node.left,node1,node2);
+        }
+        if(result1 < 0){
+            return getLCA(node.right,node1,node2);
+        }
+        return null;
+
+    }
+
+
+    /**
+     * 是否与tree结构相同
+     * @param tree
+     * @return
+     */
+    public boolean equalsTo(BinarySearchTree<T> tree ) {
+        return equals(this.root,tree.root);
+    }
+
+    private boolean equals(BinaryNode<T> sourceTree, BinaryNode<T> targetTree) {
+        if(sourceTree == null && targetTree == null){
+            return true;
+        }else if(sourceTree == null || targetTree == null) {
+            return false;
+        }else {
+            return equals(sourceTree.left,targetTree.left) && equals(sourceTree.right,targetTree.right);
+
+        }
+    }
+
+
+    /**
+     * 获取level层节点数
+     * @param level
+     * @return
+     */
+    public int getNodeCount(int level){
+        return getNodeCount(root,level);
+    }
+
+    private int getNodeCount(BinaryNode<T> node, int level) {
+        if(node == null || level == 0){
+            return 0;
+        }
+        if(level == 1){
+            return 1;
+        }
+        int left = getNodeCount(node.left, level - 1);
+        int right = getNodeCount(node.right, level - 1);
+        return left + right;
+    }
+
+
+
+
+    /**
+     * 获取节点数量
+     * @return
+     */
+    public int getNodeCount(){
+        return getNodeCount(root);
+    }
+
+    private int getNodeCount(BinaryNode<T> node) {
+        if(node == null){
+            return 0;
+        }
+        int left = getNodeCount(node.left);
+        int right = getNodeCount(node.right);
+        return left+right+1;
+    }
+
+
+    /**
+     * 获取树叶数量
+     * @return
+     */
+    public int getLeafCount(){
+        return getLeafCount(root);
+    }
+
+    private int getLeafCount(BinaryNode<T> node) {
+
+        if(node== null){
+            return 0;
+        }
+        if(node.right ==null && node.left == null){
+            return 1;
+        }
+        int count = 0;
+        if(node.right !=null){
+            count += getLeafCount(node.right);
+        }
+        if(node.left != null){
+            count += getLeafCount(node.left);
+        }
+
+        return count;
+    }
+
+
+    /**
+     * 获取高度
+     * @return
+     */
+    public int getHeight(){
+        return getHeight(root);
+    }
+
+    private int getHeight(BinaryNode<T> node) {
+        if(node == null){
+            return 0;
+        }
+        int leftHeight = getHeight(node.left);
+        int rightHeight = getHeight(node.right);
+        return (rightHeight > leftHeight?rightHeight:leftHeight) + 1;
+    }
+
+
+
+
+
+
+
+
+    /**
+     * 层序遍历
+     * @return
+     */
+    public List<T> tierIterate(){
+        return tierIterate2(root);
+    }
+
+    private List<T>  tierIterate2(BinaryNode<T> node) {
+        List<T> list = new ArrayList<>();
+        if(node == null){
+            return list;
+        }
+        ArrayDeque<BinaryNode<T>> queue = new ArrayDeque<>();
+        queue.offerFirst(node);
+        while (!queue.isEmpty()){
+            BinaryNode<T> node1 = queue.pollLast();
+            list.add(node1.t);
+            if(node1.left != null ){
+                queue.offerFirst(node1.left);
+            }
+            if(node1.right != null ){
+                queue.offerFirst(node1.right);
+            }
+        }
+
+        return list;
+    }
+
+    private List<T> tierIterate(BinaryNode<T> ...node) {
+        List<T> list = new ArrayList<>();
+        if(node == null || node.length == 0){
+            return list;
+        }
+        List<BinaryNode<T>> nodes = new ArrayList<>();
+        for (BinaryNode<T> tBinaryNode : node) {
+            if(tBinaryNode != null){
+                list.add(tBinaryNode.t);
+                nodes.add(tBinaryNode.left);
+                nodes.add(tBinaryNode.right);
+            }
+        }
+        BinaryNode<T>[] binaryNodes = new BinaryNode[nodes.size()];
+        list.addAll(tierIterate(nodes.toArray(binaryNodes)));
+        return list;
+    }
+
+
+    /**
+     * 中序遍历
+     * @return
+     */
+    public List<T> postIterate(){
+        return iterate(root,POST);
+    }
+
+    /**
+     * 中序遍历
+     * @return
+     */
+    public List<T> middleIterate(){
+        return iterate(root,MID);
+    }
+
+
+    /**
+     * 前序遍历
+     * @return
+     */
+    public List<T> preIterate(){
+        return iterate(root,PRE);
+    }
+
+
+    /**
+     *  递归遍历节点node
+     * @param node
+     * @param type 遍历顺序
+     * @return
+     */
+    private List<T> iterate(BinaryNode<T> node,int type) {
+        List<T> list = new ArrayList<>();
+        if(node == null){
+            return list;
+        }
+        if (type == PRE) {
+         list.add(node.t);
+        }
+        list.addAll(iterate(node.left,type));
+        if (type == MID) {
+            list.add(node.t);
+        }
+        list.addAll(iterate(node.right,type));
+        if (type == POST) {
+            list.add(node.t);
+        }
+        return list;
+    }
+
+
+    /**
+     * 替换元素t所在节点的左子树为targetNode
+     * @param t
+     * @param targetNode
+     */
+    public void replaceLeft(T t,BinaryNode<T> targetNode){
+        BinaryNode<T> node = findNode(t);
+        // 对象的属性变化 会传递出去
+        node.left = targetNode;
+    }
+
+    /**
+     * 查找元素t所在的节点
+     * @param t
+     * @return
+     */
+    public BinaryNode<T> findNode(T t){
+        return findNode(t,root);
+    }
+
+    private BinaryNode<T> findNode(T t, BinaryNode<T> node) {
+        if(node == null){
+            return null;
+        }
+
+        int result = t.compareTo(node.t);
+
+        if(result == 0){
+            return  node;
+        }
+
+        if(result > 0){
+            return  findNode(t,node.right);
+        }
+
+        if(result < 0){
+            return  findNode(t,node.left);
+        }
+        return null;
+    }
 
 
     /**
@@ -21,7 +403,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     /**
-     * 从节点中删除元素t
+     * 从节点中删除元素t  遍历-判断-操作
      * @param t
      * @param node
      * @return
@@ -76,8 +458,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param t
      * @return
      */
-    public void insert(T t){
-        insert(t,root);
+    public BinarySearchTree<T> insert(T t){
+        root = insert(t,root);
+        return this;
     }
 
     /**
@@ -109,7 +492,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return node;
         }
 
-        return null;
+        return node;
     }
 
 

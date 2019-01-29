@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.neil.domain.ActivityGiftProductVO;
 import org.neil.domain.TestDomainWapper;
 import org.neil.domain.UpdateChildLevelVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,9 +84,16 @@ public class TestController {
     }
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
-    public Object upload(@PathVariable("file") MultipartFile file,HttpServletRequest request) {
+    public Object upload(@PathVariable("file") MultipartFile file, UpdateChildLevelVO vo,HttpServletRequest request) {
         System.out.println(file);
+
         return "";
+    }
+
+
+    @RequestMapping(value = "test5", method = RequestMethod.POST)
+    public Object list(@RequestBody ActivityGiftProductVO vo) {
+        return vo;
     }
 
 

@@ -7,7 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.neil.domain.ActivityGiftProductVO;
 import org.neil.domain.TestDomainWapper;
 import org.neil.domain.UpdateChildLevelVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("test")
 public class TestController {
+
+    private final Logger logger = LoggerFactory.getLogger(TestController.class);
+
 
     @Autowired
     private TestDomainWapper testDomainWapper;
@@ -98,6 +104,26 @@ public class TestController {
 
 
 
+    @Autowired
+    private TaskExecutor taskExecutor;
+    @RequestMapping(value = "test6", method = RequestMethod.GET)
+    public Object list() {
+        Integer integer = 0;
+        Long start = System.currentTimeMillis();
+        for (int i = 0; i < 2000; i++) {
+            taskExecutor.execute(() -> {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("====");
+            });
+        }
+        Long end = System.currentTimeMillis();
+        System.out.println("耗时："+(end-start));
 
+        return integer;
+    }
 
 }

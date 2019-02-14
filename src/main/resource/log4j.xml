@@ -12,6 +12,17 @@
         </layout>
     </appender>
 
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="logs/study/study.log" />
+        <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />
+        </layout>
+    </appender>
+
+
     <!--<appender name="WEB_STD" class="org.apache.log4j.DailyRollingFileAppender">-->
     <!--<param name="file" value="/ruhnn/logs/lc_web/web_std.log" />-->
     <!--<param name="append" value="true" />-->
@@ -107,18 +118,23 @@
     <!--</logger>-->
     <!---->
     <!--<logger name="org.springframework" additivity="false">-->
-    <!--<level value="WARN" />-->
+    <!--<level value="INFO" />-->
     <!--<appender-ref ref="FILE" />-->
     <!--</logger>-->
+
+    <logger name="org.neil.controller" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+    </logger>
 
     <!--<logger name="org.mybatis" additivity="true">-->
     <!--<level value="debug" />-->
     <!--<appender-ref ref="CONSOLE" />-->
     <!--</logger>-->
-    <logger name="org.apache.ibatis" additivity="true">
-        <level value="debug"/>
-        <appender-ref ref="CONSOLE"/>
-    </logger>
+    <!--<logger name="org.apache.ibatis" additivity="true">-->
+        <!--<level value="debug"/>-->
+        <!--<appender-ref ref="CONSOLE"/>-->
+    <!--</logger>-->
 
     <!--<logger name="java.sql" additivity="true">-->
     <!--<level value="WARN" />-->
@@ -168,4 +184,5 @@
         <level value="debug"/>
         <appender-ref ref="CONSOLE"/>
     </root>
+
 </log4j:configuration>

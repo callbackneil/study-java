@@ -8,36 +8,38 @@ public class TestMain {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> bsTree = new BinarySearchTree<>();
-        bsTree.setRootValue(50);
+//        bsTree.setRootValue(50);
+
+        bsTree.insert(50);
         bsTree.insert(40);
         bsTree.insert(70);
 
         bsTree.insert(60);
         bsTree.insert(80);
 //
-//        bsTree.insert(55);
-//        bsTree.insert(65);
-//
-//        bsTree.insert(85);
-//        bsTree.insert(75);
-//
-//        bsTree.insert(79);
-//
-//        bsTree.insert(82);
-//        bsTree.insert(86);
+        bsTree.insert(55);
+        bsTree.insert(65);
+
+        bsTree.insert(85);
+        bsTree.insert(75);
+
+        bsTree.insert(79);
+
+        bsTree.insert(82);
+        bsTree.insert(86);
 
 
         boolean result = bsTree.isFBT();
         System.out.println(result);
 
-//        int height = bsTree.getHeight();
+        int height = bsTree.getHeight();
 //        int leafCount = bsTree.getLeafCount();
 //        int nodeCount = bsTree.getNodeCount();
 //        int nodeCountK = bsTree.getNodeCount(4);
 //        boolean equalsTo = bsTree.equalsTo(bsTree);
 //        Integer t = bsTree.getLCA(bsTree.findNode(65), bsTree.findNode(85));
 //        Integer t2 = bsTree.getLCA2(bsTree.findNode(65), bsTree.findNode(85));
-//        System.out.println(height);
+        System.out.println(height);
 //        System.out.println(leafCount);
 //        System.out.println(nodeCount);
 //        System.out.println(nodeCountK);

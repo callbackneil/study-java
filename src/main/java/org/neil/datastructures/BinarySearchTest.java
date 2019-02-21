@@ -4,7 +4,7 @@ package org.neil.datastructures;
  * @author neil
  * @date 2019-01-17
  */
-public class TestMain {
+public class BinarySearchTest {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> bsTree = new BinarySearchTree<>();

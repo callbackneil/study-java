@@ -32,17 +32,48 @@ public class Test2 {
 //        oldlist1.retainAll(newlist2);
 //
 //        System.out.println(111);
-        Map<String,Integer> map = new HashMap<>();
-//        map.put("id",new ArrayList<>());
-//        map.put("level",1);
-//        List list= (List)map.get("id");
-//        list.add("12");
-        map.put("1",1);
-        map.put("2",1);
-        map.put("1",2);
-        map.put("3",1);
+        Map<Key,Integer> map = new HashMap<>();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 50; j++) {
+                Key key = new Key(i);
+                key.setValue(j);
+                Integer oldValue = map.put(key, j);
+                System.out.println(oldValue);
+
+            }
+        }
         System.out.println(map);
 
 
+    }
+
+    static class Key{
+        private int code;
+        private int value;
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+
+        public Key(int code) {
+            this.code = code;
+        }
+
+        @Override
+        public int hashCode() {
+            return code;
+        }
+
+        @Override
+        public boolean equals(Object key) {
+//            if(key instanceof Key){
+//                return this.code == ((Key)key).code;
+//            }
+            return false;
+        }
     }
 }

@@ -1,8 +1,5 @@
 package org.neil.util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author neil
  * @date 2018/8/9
@@ -32,17 +29,27 @@ public class Test2 {
 //        oldlist1.retainAll(newlist2);
 //
 //        System.out.println(111);
-        Map<Key,Integer> map = new HashMap<>();
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 50; j++) {
-                Key key = new Key(i);
-                key.setValue(j);
-                Integer oldValue = map.put(key, j);
-                System.out.println(oldValue);
+//        Map<Key,Integer> map = new HashMap<>();
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 50; j++) {
+//                Key key = new Key(i);
+//                key.setValue(j);
+//                Integer oldValue = map.put(key, j);
+//                System.out.println(oldValue);
+//
+//            }
+//        }
+//        System.out.println(map);
 
-            }
-        }
-        System.out.println(map);
+
+
+        int h =255;
+        System.out.println(Integer.toBinaryString(h));
+
+        int i1 = h >>> 16;
+        System.out.println(i1);
+        int i = h ^ i1;
+        System.out.println(i);
 
 
     }

@@ -53,6 +53,9 @@
         <property name="resolveLazily" value="true"/>
     </bean>
 
+    <bean id="MyFactoryBean" class="org.neil.util.MyFactoryBean"/>
+
+    <bean id="springInitTest" class="org.neil.util.SpringInitTest" init-method="initMethod"/>
 
     <import resource="spring-bean.xml"/>
     <import resource="spring-datasource.xml"/>

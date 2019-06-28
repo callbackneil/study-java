@@ -13,10 +13,10 @@ public class SortArithmetic {
 
         Integer[] array = {9, 0, 3, 4, 6, 7, 2, 1, 5, 8};
 
-//        冒泡排序(array);
-//        简单选择排序(array);
-//        直接插入排序(array);
-//        希尔排序(array);
+        冒泡排序(array);
+        简单选择排序(array);
+        直接插入排序(array);
+        希尔排序(array);
         System.out.println(array);
 
         List<Integer> list = new ArrayList<>();

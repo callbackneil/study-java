@@ -33,7 +33,6 @@ public class ImageUtil {
             //通过输入流获取图片数据
             InputStream inputio = conn.getInputStream();
 
-
             return inputio;
         } catch (IOException e) {
 

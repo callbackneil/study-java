@@ -21,6 +21,8 @@ public class TestArguementResolver implements HandlerMethodArgumentResolver {
         if (aClass.equals(TestDomainWapper.class)) {
             return true;
         }
+
+        new Integer(100);
         return false;
     }
 
@@ -32,4 +34,27 @@ public class TestArguementResolver implements HandlerMethodArgumentResolver {
 
         return null;
     }
+
+//    public static void main(String[] args) {
+//        Integer i1 = Integer.valueOf(100);
+//        int i2 = new Integer(100);
+//        Integer i3  = Integer.valueOf(100);
+//        System.out.println(i1 == i2);
+//        System.out.println(i1 == i3);
+//        System.out.println(i2 == i3);
+//    }
+
+    public static void main(String[] args) {
+        int i = 0;
+        int[] arr = {10,9,8,7,6,5,4,3,2,1,0};
+        int index = 0;
+        for (; i < 11; i++) {
+            int nextIndex = (index+1) % arr.length;
+            index = nextIndex;
+            System.out.println(arr[index]);
+        }
+    }
+
+
+
 }

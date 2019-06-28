@@ -48,5 +48,7 @@
         </property>
     </bean>
 
-    <import resource="spring-bean.xml"/>
+    <bean id="beanLiveTest" class="org.neil.util.BeanLiveTest" init-method="initMethod" destroy-method="destroyMethod"/>
+
+    <!--<import resource="spring-bean.xml"/>-->
 </beans>

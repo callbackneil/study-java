@@ -27,10 +27,26 @@ public class BeanUtilsTest {
         testDomain.setIdList(idList);
         testDomainWapper.setTestDomain(testDomain);
         TestDomainAnother testDomainAnother = new TestDomainAnother();
-        TestDomainWapperAnother testDomainWapperAnother = new TestDomainWapperAnother();
-        BeanUtils.copyProperties(testDomainWapper, testDomainWapperAnother);
+        TestDomainWapperAnother testDomainWapperAnother = convertTestDomainWapper2TestDomainWapperAnother(testDomainWapper);
         BeanUtils.copyProperties(testDomain, testDomainAnother);
         System.out.println(testDomainAnother);
         System.out.println(testDomainWapperAnother);
     }
+
+    public static TestDomainWapperAnother convertTestDomainWapper2TestDomainWapperAnother(TestDomainWapper testDomainWapper) {
+        if (testDomainWapper == null) {
+            return null;
+        }
+        TestDomainWapperAnother testDomainWapperAnother = new TestDomainWapperAnother();
+        testDomainWapperAnother.setId(testDomainWapper.getId());
+        testDomainWapperAnother.setTestDomain(testDomainWapper.getTestDomain());
+        return testDomainWapperAnother;
+    }
+
+
+    @Test
+    public void name() throws Exception {
+    }
+
+
 }

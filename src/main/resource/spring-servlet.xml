@@ -8,10 +8,6 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd
-
-
-
-
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
@@ -34,7 +30,6 @@
     </mvc:annotation-driven>
 
     <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
-
     </bean>
 
 
@@ -48,6 +43,22 @@
         </property>
     </bean>
 
+    <!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为1MB -->
+        <property name="maxUploadSize">
+            <value>1048576</value>
+        </property>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+    <bean id="MyFactoryBean" class="org.neil.util.MyFactoryBean"/>
+
+    <bean id="springInitTest" class="org.neil.util.SpringInitTest" init-method="initMethod"/>
+
+    <import resource="spring-bean.xml"/>
+    <import resource="spring-datasource.xml"/>
     <bean id="beanLiveTest" class="org.neil.util.BeanLiveTest" init-method="initMethod" destroy-method="destroyMethod"/>
 
     <!--<import resource="spring-bean.xml"/>-->

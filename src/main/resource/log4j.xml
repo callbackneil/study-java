@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://toolkit.alibaba-inc.com/dtd/log4j/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- ===================================================================== -->
+    <!-- 以下是appender的定义 -->
+    <!-- ===================================================================== -->
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%n%d %n%-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="logs/study/study.log" />
+        <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />
+        </layout>
+    </appender>
+
+
+    <!--<appender name="WEB_STD" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/web_std.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/web_core.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="TRADE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/trade.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="REFUND_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/refund.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+    <!---->
+    <!--<appender name="WMS_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/wms.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="ACCESS_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/web_access.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="SHOW-SQL" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/show.sql.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern"-->
+    <!--value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}.%M(%L)(%r) | %m%n" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+    <!---->
+    <!--<appender name="manager-monitor" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/monitor/manager-monitor.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern" value="%n%n%d %-5p %c{2}-%t - %m" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="dao-monitor" class="org.apache.log4j.DailyRollingFileAppender">-->
+    <!--<param name="file" value="/ruhnn/logs/lc_web/monitor/dao-monitor.log" />-->
+    <!--<param name="append" value="true" />-->
+    <!--<param name="encoding" value="UTF-8" />-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--<param name="ConversionPattern" value="%n%n%d %-5p %c{2}-%t - %m" />-->
+    <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<logger name="com.alibaba.druid.filter.stat.StatFilter"-->
+    <!--additivity="false">-->
+    <!--<level value="INFO" />-->
+    <!--<appender-ref ref="SHOW-SQL" />-->
+    <!--</logger>-->
+    <!---->
+    <!--<logger name="org.springframework" additivity="false">-->
+    <!--<level value="INFO" />-->
+    <!--<appender-ref ref="FILE" />-->
+    <!--</logger>-->
+
+    <logger name="org.neil.controller" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!--<logger name="org.mybatis" additivity="true">-->
+    <!--<level value="debug" />-->
+    <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+    <!--<logger name="org.apache.ibatis" additivity="true">-->
+        <!--<level value="debug"/>-->
+        <!--<appender-ref ref="CONSOLE"/>-->
+    <!--</logger>-->
+
+    <!--<logger name="java.sql" additivity="true">-->
+    <!--<level value="WARN" />-->
+    <!--<appender-ref ref="FILE" />-->
+    <!--</logger>-->
+
+    <!--<logger name="com.ruhnn" additivity="false">-->
+    <!--<level value="INFO" />-->
+    <!--<appender-ref ref="FILE" />-->
+    <!--</logger>-->
+
+    <!--<logger name="TRADE" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="TRADE_APPENDER" />-->
+    <!--</logger>-->
+    <!---->
+    <!--<logger name="REFUND" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="REFUND_APPENDER" />-->
+    <!--</logger>-->
+    <!---->
+    <!--<logger name="WMS" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="WMS_APPENDER" />-->
+    <!--</logger>-->
+    <!---->
+    <!--<logger name="ACCESS" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="ACCESS_APPENDER" />-->
+    <!--</logger>-->
+
+    <!--<logger name="manager-monitor" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="manager-monitor" />-->
+    <!--</logger>-->
+
+    <!--<logger name="dao-monitor" additivity="false">-->
+    <!--<level value="info" />-->
+    <!--<appender-ref ref="dao-monitor" />-->
+    <!--</logger>-->
+
+    <!-- ===================================================================== -->
+    <!-- Root logger的定义 -->
+    <!-- ===================================================================== -->
+
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>

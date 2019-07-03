@@ -1,6 +1,8 @@
 package org.neil.datastructures;
 
 /**
+ * B树 BST
+ * 二叉搜索树
  * @author neil
  * @date 2019-01-17
  */

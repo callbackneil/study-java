@@ -2,17 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd
            http://www.springframework.org/schema/mvc
-           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:component-scan base-package="org.neil"/>
     <context:annotation-config/>
+
+    <task:annotation-driven executor="taskExecutor"></task:annotation-driven>
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
@@ -43,6 +45,16 @@
         </property>
     </bean>
 
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="20"/>
+        <property name="queueCapacity" value="1000"/>
+        <property name="keepAliveSeconds" value="60"/>
+    </bean>
+
+
+
+    <!--<import resource="spring-bean.xml"/>-->
     <!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -8,6 +8,7 @@ import org.neil.domain.ActivityGiftProductVO;
 import org.neil.domain.TestDomain;
 import org.neil.domain.TestDomainWapper;
 import org.neil.domain.UpdateChildLevelVO;
+import org.neil.manager.TestManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class TestController {
     private final Logger logger = LoggerFactory.getLogger(TestController.class);
 
 
+    @Autowired
+    private TestManager testManager;
     @Autowired
     private TestDomainWapper testDomainWapper;
 
@@ -137,6 +140,15 @@ public class TestController {
     @RequestMapping(value = "objectTest", method = RequestMethod.POST)
     public Object objectTest(@RequestBody Object o) {
         return o;
+
+    }
+
+    @RequestMapping(value = "test3", method = RequestMethod.GET)
+    public Object asyncTest() {
+        System.out.println("执行异步方法调用前");
+        testManager.asnyTest();
+        System.out.println("执行异步方法调用后");
+        return "success";
     }
 
 
@@ -148,21 +160,18 @@ public class TestController {
 
     @GetMapping(value = "circulationTest")
     public Object circulationTest() throws Exception {
-        circulation(new byte[1024*1024*1],0);
+        circulation(new byte[1024 * 1024 * 1], 0);
         return testDomain;
     }
 
-    private void circulation(byte[] bytes,int i) {
+    private void circulation(byte[] bytes, int i) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(i+1);
-        circulation(bytes,i+1);
+        System.out.println(i + 1);
+        circulation(bytes, i + 1);
     }
-
-
-
 
 }

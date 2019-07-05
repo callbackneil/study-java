@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "http://toolkit.alibaba-inc.com/dtd/log4j/log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://jakarta.apache.org/log4j/ ">
     <!-- ===================================================================== -->
     <!-- 以下是appender的定义 -->
     <!-- ===================================================================== -->
@@ -13,12 +15,12 @@
     </appender>
 
     <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="logs/study/study.log" />
-        <param name="append" value="true" />
-        <param name="encoding" value="UTF-8" />
+        <param name="file" value="logs/study/study.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-                   value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n" />
+                   value="【 %d{MM-dd HH:mm:ss:sss\} 】%p[%t]-%C{1}(%L)(%r) | %m%n"/>
         </layout>
     </appender>
 
@@ -123,8 +125,8 @@
     <!--</logger>-->
 
     <logger name="org.neil.controller" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="FILE" />
+        <level value="INFO"/>
+        <appender-ref ref="FILE"/>
     </logger>
 
     <!--<logger name="org.mybatis" additivity="true">-->
@@ -132,8 +134,8 @@
     <!--<appender-ref ref="CONSOLE" />-->
     <!--</logger>-->
     <!--<logger name="org.apache.ibatis" additivity="true">-->
-        <!--<level value="debug"/>-->
-        <!--<appender-ref ref="CONSOLE"/>-->
+    <!--<level value="debug"/>-->
+    <!--<appender-ref ref="CONSOLE"/>-->
     <!--</logger>-->
 
     <!--<logger name="java.sql" additivity="true">-->

@@ -14,7 +14,7 @@
     <context:component-scan base-package="org.neil"/>
     <context:annotation-config/>
 
-    <task:annotation-driven executor="taskExecutor"></task:annotation-driven>
+    <task:annotation-driven/>
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
@@ -46,14 +46,6 @@
     </bean>
 
     <bean id="beanLiveTest" class="org.neil.util.BeanLiveTest" init-method="initMethod" destroy-method="destroyMethod"/>
-
-    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="5"/>
-        <property name="maxPoolSize" value="20"/>
-        <property name="queueCapacity" value="1000"/>
-        <property name="keepAliveSeconds" value="60"/>
-    </bean>
-
 
 
     <!--<import resource="spring-bean.xml"/>-->

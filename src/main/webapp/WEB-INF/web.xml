@@ -8,20 +8,21 @@
         <param-name>webAppRootKey</param-name>
         <param-value>study.root</param-value>
     </context-param>
-    <!--<context-param>-->
-        <!--<param-name>log4jConfigLocation</param-name>-->
-        <!--<param-value>classpath:log4j.xml</param-value>-->
-    <!--</context-param>-->
-
     <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-servlet.xml</param-value>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.xml</param-value>
     </context-param>
 
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-    <!--&lt;!&ndash; 监听器 &ndash;&gt;-->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>/WEB-INF/spring-servlet.xml</param-value>-->
+    <!--</context-param>-->
+
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>-->
+    <!--</listener>-->
+
+    <!-- 监听器不配置也可以DispatcherServlet加载时会先去初始化父容器 -->
     <!--<listener>-->
         <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
     <!--</listener>-->
@@ -48,6 +49,7 @@
         <servlet-name>spring</servlet-name>
         <!-- spring初始化配置文件位置 -->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--不指定默认会加载WEB-INFO下的名为<servlet-name>-servlet.xml的配置文件-->
         <!--<init-param>-->
             <!--<param-name>contextConfigLocation</param-name>-->
             <!--<param-value>classpath:spring-servlet.xml</param-value>-->

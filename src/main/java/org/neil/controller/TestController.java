@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.neil.domain.ActivityGiftProductVO;
+import org.neil.domain.PC;
 import org.neil.domain.TestDomain;
 import org.neil.domain.TestDomainWapper;
 import org.neil.domain.UpdateChildLevelVO;
 import org.neil.manager.TestManager;
+import org.neil.service.PCService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import com.github.pagehelper.Page;
 
 
 /**
@@ -40,6 +43,9 @@ public class TestController {
 
     @Autowired
     private TestDomain testDomain;
+
+    @Autowired
+    private PCService pcService;
 
 
     public void setTestDomainWapper(TestDomainWapper testDomainWapper) {
@@ -163,6 +169,16 @@ public class TestController {
         circulation(new byte[1024 * 1024 * 1], 0);
         return testDomain;
     }
+
+
+    @GetMapping(value = "querypc")
+    public Object querypc() throws Exception {
+        Page<PC> pcs = pcService.pageQueryPCList();
+        return pcs;
+    }
+
+
+
 
     private void circulation(byte[] bytes, int i) {
         try {

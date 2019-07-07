@@ -13,6 +13,13 @@
         (#{pcId},#{pcName},#{pcPrice})
     </insert>
 
+    <update id="updatePC" parameterType="org.neil.domain.PC">
+        UPDATE pc
+        set pcName = #{pcName}
+        where  pcId = #{pcId}
+    </update>
+
+
 
     <select id="pageQueryPCList" resultType="org.neil.domain.PC">
         SELECT pcId,pcName,pcPrice from pc

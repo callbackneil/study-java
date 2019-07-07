@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author neil
@@ -24,4 +25,26 @@ public class PCServiceImpl implements PCService {
         Page<PC> pageList = (Page<PC>) pcDao.pageQueryPCList();
         return pageList;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void update(PC pc) throws Exception {
+        pcDao.updatePC(pc);
+        throw new Exception("exception");
+    }
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void insert(PC pc) throws Exception {
+        pcDao.insertPC(pc);
+//        throw new Exception("just test");
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void insertAndUpdate(PC pc) throws Exception {
+        insert(pc);
+        update(pc);
+    }
+
+
 }

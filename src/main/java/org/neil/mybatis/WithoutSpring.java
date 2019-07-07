@@ -16,7 +16,7 @@ import org.neil.dao.PCDao;
 public class WithoutSpring {
 
     public static void main(String[] args) throws IOException {
-        String resource = "mapper/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();

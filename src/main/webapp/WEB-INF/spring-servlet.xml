@@ -63,7 +63,7 @@
 
     <bean id="springInitTest" class="org.neil.util.SpringInitTest" init-method="initMethod"/>
 
-    <import resource="spring-bean.xml"/>
-    <import resource="spring-datasource.xml"/>
+    <import resource="classpath:spring-bean.xml"/>
+    <import resource="classpath:spring-datasource.xml"/>
     <!--<import resource="spring-bean.xml"/>-->
 </beans>

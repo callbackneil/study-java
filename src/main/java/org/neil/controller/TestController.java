@@ -4,11 +4,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.neil.domain.ActivityGiftProductVO;
-import org.neil.domain.TestDomain;
-import org.neil.domain.TestDomainWapper;
-import org.neil.domain.UpdateChildLevelVO;
+import org.neil.domain.*;
 import org.neil.manager.TestManager;
+import org.neil.service.PCService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +38,8 @@ public class TestController {
 
     @Autowired
     private TestDomain testDomain;
-
+    @Autowired
+    private PCService pcService;
 
     public void setTestDomainWapper(TestDomainWapper testDomainWapper) {
         this.testDomainWapper = testDomainWapper;
@@ -163,6 +162,17 @@ public class TestController {
         circulation(new byte[1024 * 1024 * 1], 0);
         return testDomain;
     }
+
+
+    @GetMapping(value = "insert")
+    public Object insert() throws Exception {
+        PC pc = new PC();
+        pc.setPcName("外星人");
+        pc.setPcPrice(100000D);
+        pcService.insertAndUpdate(pc);
+        return "success";
+    }
+
 
     private void circulation(byte[] bytes, int i) {
         try {

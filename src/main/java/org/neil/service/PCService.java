@@ -1,6 +1,7 @@
 package org.neil.service;
 
 import org.neil.domain.PC;
+import org.springframework.transaction.annotation.Transactional;
 import com.github.pagehelper.Page;
 
 /**
@@ -10,4 +11,12 @@ import com.github.pagehelper.Page;
 public interface PCService {
 
     Page<PC> pageQueryPCList();
+
+    void update(PC pc) throws Exception;
+
+    @Transactional
+    void insert(PC pc) throws Exception;
+
+    @Transactional
+    void insertAndUpdate(PC pc) throws Exception;
 }

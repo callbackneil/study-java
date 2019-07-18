@@ -16,6 +16,8 @@ public interface PCDao {
 
     Long insertPC(PC pc);
 
+    Integer updatePC(PC pc);
+
     List<PC> pageQueryPCList();
 
 }

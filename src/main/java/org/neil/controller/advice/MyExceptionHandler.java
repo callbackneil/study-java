@@ -12,7 +12,7 @@ public class MyExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
-
+        System.out.println(e);
         return e.getMessage();
     }
 

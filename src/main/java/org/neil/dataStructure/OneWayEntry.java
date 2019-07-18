@@ -7,17 +7,23 @@ public class OneWayEntry<T> {
 
     public static void main(String[] args) {
         OneWayEntry<Integer> oneWayEntry = new OneWayEntry<>();
-        oneWayEntry.add(1);
-        oneWayEntry.add(2);
-        oneWayEntry.add(3);
-        oneWayEntry.add(4);
+        oneWayEntry.put(1);
+        oneWayEntry.put(2);
+        oneWayEntry.put(3);
+        oneWayEntry.put(4);
         System.out.println(oneWayEntry);
     }
 
 
     private Entry<T> root;
 
-    private Entry<T>[] table;
+    private Entry<T>[] table = new Entry[1];
+
+    public boolean put(T t){
+        add(t);
+        table[0] = root;
+        return true;
+    }
 
 
     public boolean add(T t){

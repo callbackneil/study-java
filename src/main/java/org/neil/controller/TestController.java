@@ -14,7 +14,6 @@ import org.neil.service.PCService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.task.TaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +46,8 @@ public class TestController {
     @Autowired
     private PCService pcService;
 
+    @Autowired
+    private PCService pcService;
 
     public void setTestDomainWapper(TestDomainWapper testDomainWapper) {
         this.testDomainWapper = testDomainWapper;
@@ -119,28 +120,28 @@ public class TestController {
     }
 
 
-    @Autowired
-    private TaskExecutor taskExecutor;
+//    @Autowired
+//    private TaskExecutor taskExecutor;
 
-    @RequestMapping(value = "test6", method = RequestMethod.GET)
-    public Object list() {
-        Integer integer = 0;
-        Long start = System.currentTimeMillis();
-        for (int i = 0; i < 2000; i++) {
-            taskExecutor.execute(() -> {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("====");
-            });
-        }
-        Long end = System.currentTimeMillis();
-        System.out.println("耗时：" + (end - start));
-
-        return integer;
-    }
+//    @RequestMapping(value = "test6", method = RequestMethod.GET)
+//    public Object list() {
+//        Integer integer = 0;
+//        Long start = System.currentTimeMillis();
+//        for (int i = 0; i < 2000; i++) {
+//            taskExecutor.execute(() -> {
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("====");
+//            });
+//        }
+//        Long end = System.currentTimeMillis();
+//        System.out.println("耗时：" + (end - start));
+//
+//        return integer;
+//    }
 
 
     @RequestMapping(value = "objectTest", method = RequestMethod.POST)
@@ -169,6 +170,17 @@ public class TestController {
         circulation(new byte[1024 * 1024 * 1], 0);
         return testDomain;
     }
+
+
+    @GetMapping(value = "insert")
+    public Object insert() throws Exception {
+        PC pc = new PC();
+        pc.setPcName("外星人");
+        pc.setPcPrice(100000D);
+        pcService.insertAndUpdate(pc);
+        return "success";
+    }
+
 
 
     @GetMapping(value = "querypc")

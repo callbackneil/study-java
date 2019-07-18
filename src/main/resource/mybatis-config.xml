@@ -46,6 +46,7 @@
 
     <mappers>
         <mapper resource="mapper/test.xml"/>
+        <!--<package name=""></package>-->
     </mappers>
 
 </configuration>

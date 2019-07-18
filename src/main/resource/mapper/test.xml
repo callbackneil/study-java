@@ -3,7 +3,7 @@
 <mapper namespace="org.neil.dao.PCDao">
 
 
-    <select id="getMAXId" resultType="java.lang.String">
+    <select id="getMAXId" resultType="java.java.lang.String">
       SELECT Max(pcId) from pc
     </select>
 

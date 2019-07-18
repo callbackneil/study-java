@@ -17,7 +17,7 @@ public class OOMTest1 {
          *  查看OOM之后的结果
          *  Wed Jun 19 08:34:22 CST 2019 Bis run
          Wed Jun 19 08:34:23 CST 2019 Cis run
-         Exception in thread "A" java.lang.OutOfMemoryError: Java heap space
+         Exception in thread "A" java.java.lang.OutOfMemoryError: Java heap space
          at org.neil.util.OOMTest1$1.run(OOMTest1.java:38)
          Wed Jun 19 08:34:23 CST 2019 Bis run
          Wed Jun 19 08:34:24 CST 2019 Cis run

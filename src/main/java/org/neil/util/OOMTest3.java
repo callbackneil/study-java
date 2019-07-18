@@ -16,10 +16,10 @@ public class OOMTest3 {
          *  指定对堆内存大小 -Xmx20m -Xms5m -Xmn2m
          *  查看OOM之后的结果：
          *  Wed Jun 19 08:43:36 CST 2019 Ais run
-         Exception in thread "B" java.lang.OutOfMemoryError: Java heap space
+         Exception in thread "B" java.java.lang.OutOfMemoryError: Java heap space
          Wed Jun 19 08:43:36 CST 2019 Cis run
          at org.neil.util.OOMTest2$2.run(OOMTest2.java:41)
-         Exception in thread "A" java.lang.OutOfMemoryError: Java heap space
+         Exception in thread "A" java.java.lang.OutOfMemoryError: Java heap space
          at org.neil.util.OOMTest2$1.run(OOMTest2.java:26)
          Wed Jun 19 08:43:37 CST 2019 Cis run
          Wed Jun 19 08:43:38 CST 2019 Cis run

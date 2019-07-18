@@ -13,7 +13,7 @@ import org.neil.dao.PCDao;
  * @author neil
  * @date 2019-07-05
  */
-public class WithoutSpring {
+public class MyBatisAPI{
 
     public static void main(String[] args) throws IOException {
         String resource = "mybatis-config.xml";

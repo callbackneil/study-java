@@ -46,9 +46,6 @@ public class TestController {
     @Autowired
     private PCService pcService;
 
-    @Autowired
-    private PCService pcService;
-
     public void setTestDomainWapper(TestDomainWapper testDomainWapper) {
         this.testDomainWapper = testDomainWapper;
     }

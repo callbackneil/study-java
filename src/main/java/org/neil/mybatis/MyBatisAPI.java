@@ -1,21 +1,22 @@
 package org.neil.mybatis;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.neil.dao.PCDao;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
- * @author neil
+ * 纯MybatisAPI编码启动
  * @date 2019-07-05
  */
-public class WithoutSpring {
+public class MyBatisAPI {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Class.forName("");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);

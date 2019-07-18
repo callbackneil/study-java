@@ -4,36 +4,36 @@ package org.neil.util;
  * Created by zhangzhen on 2019/7/17.
  */
 public class ClassTest {
+
+
+    /**
+     * 把static变量的加载和初始化赋值分成了两步
+     * 按顺序把static块的代码合并
+     */
+
     static {
         c = 2;
-        System.out.println("test");
     }
     public static int c = 1;
-    public final static int d = 1;
-    int a = 1;
-    int b = 0;
-
-    {
-        b = 2;
-    }
     static {
-        System.out.println("c="+c);
-        System.out.println("d="+d);
-    }
-    public ClassTest() {
-      b= 3;
+        c = 3;
     }
 
-    public ClassTest(int a, int b) {
-        this.a = a;
-        this.b = b;
+    /**
+     * 上下等价
+     */
+//    public static int c;
+    static {
+        c = 1;
+        c = 2;
+        c = 3;
     }
 
-    void test(){
-    }
 
-    public static void main(String[] args) {
-    }
+
+
+
+
 }
 
 

@@ -32,6 +32,12 @@ public class ClassTest {
 
 
 
+    public static void main(String[] args) {
+        boolean hasNext = false;
+        int count = 0;
+        hasNext = count > 0;
+
+    }
 
 
 }

@@ -43,9 +43,6 @@ public class Mutex implements Lock {
     }
 
 
-
-
-
     /**
      * 自定义同步器实现AQS   重写独占式的获取与释放锁的方法和查询当前线程是否占用锁的方法
      */

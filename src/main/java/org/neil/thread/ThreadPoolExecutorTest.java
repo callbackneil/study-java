@@ -1,7 +1,8 @@
 package org.neil.thread;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author neil
@@ -10,28 +11,25 @@ import java.util.concurrent.Executors;
 public class ThreadPoolExecutorTest {
 
 
-    public static void main(String[] args) {
-        ExecutorService executorService = null;
+    public static void main(String[] args) throws InterruptedException {
+        ThreadPoolExecutor executorService = null;
         try {
-            executorService = Executors.newCachedThreadPool();
+//            executorService = Executors.newCachedThreadPool();
 
-            executorService = Executors.newFixedThreadPool(100);
+            executorService = new ThreadPoolExecutor(2,10,1L, TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>(5));
+            executorService.prestartAllCoreThreads();
+//            executorService.prestartCoreThread();
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 20; i++) {
                 executorService.execute(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-                        System.out.println(100);
-
-
-
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println(Thread.currentThread().getName()+" is execute task");
                     }
                 });
 
@@ -78,7 +76,9 @@ public class ThreadPoolExecutorTest {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
+            Thread.sleep(3000);
             executorService.shutdown();
+
 //            if (executorService.isTerminated()) {
 //            }
         }

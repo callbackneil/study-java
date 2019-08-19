@@ -46,4 +46,9 @@ public class Request {
     return uri;
   }
 
+
+  public static void main(String[] args) {
+    System.out.println("收到快递破损，已联系查件处理，由于考虑到买家体验，先给破损了的产品补发处理".length());
+  }
+
 }

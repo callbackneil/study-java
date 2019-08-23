@@ -183,7 +183,7 @@
     <!-- ===================================================================== -->
 
     <root>
-        <level value="debug"/>
+        <level value="INFO"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 

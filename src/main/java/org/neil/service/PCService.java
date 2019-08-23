@@ -19,4 +19,7 @@ public interface PCService {
 
     @Transactional
     void insertAndUpdate(PC pc) throws Exception;
+
+
+    PC getById(Integer id);
 }

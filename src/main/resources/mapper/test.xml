@@ -3,7 +3,7 @@
 <mapper namespace="org.neil.dao.PCDao">
 
 
-    <select id="getMAXId" resultType="java.java.lang.String">
+    <select id="getMAXId" resultType="java.lang.String">
       SELECT Max(pcId) from pc
     </select>
 
@@ -24,6 +24,12 @@
     <select id="pageQueryPCList" resultType="org.neil.domain.PC">
         SELECT pcId,pcName,pcPrice from pc
     </select>
+
+    <select id="getById" resultType="org.neil.domain.PC" parameterType="java.lang.Integer">
+        SELECT pcId,pcName,pcPrice from pc
+        where pcId = #{id}
+    </select>
+
 
 </mapper>
 

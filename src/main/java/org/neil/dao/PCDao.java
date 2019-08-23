@@ -3,6 +3,7 @@ package org.neil.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.neil.domain.PC;
 
 /**
@@ -19,5 +20,8 @@ public interface PCDao {
     Integer updatePC(PC pc);
 
     List<PC> pageQueryPCList();
+
+    PC getById(@Param("id") Integer id);
+
 
 }

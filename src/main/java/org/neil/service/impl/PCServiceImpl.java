@@ -46,5 +46,17 @@ public class PCServiceImpl implements PCService {
         update(pc);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public PC getById(Integer id) {
+        PC pc1 = pcDao.getById(5);
+        System.out.println(pc1);
+        PC pc2 = pcDao.getById(5);
+        System.out.println(pc2);
+        PC pc3 = pcDao.getById(5);
+        System.out.println(pc3);
+        return pc3;
+    }
+
 
 }

@@ -14,18 +14,14 @@ import org.springframework.context.ApplicationContextAware;
  * Created by zhangzhen on 2019/6/15.
  */
 public class BeanLiveTest  implements BeanNameAware,BeanFactoryAware,ApplicationContextAware,BeanPostProcessor,InitializingBean,DisposableBean{
-
-    public static void main(String[] args) {
-        System.out.println("main is run");
-    }
-
     public BeanLiveTest() {
         System.out.println("构造器方法");
     }
 
-    @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("BeanFactoryAware-setBeanFactory is-run");
+    private BeanLiveProperty beanLiveProperty;
+
+    public void setBeanLiveProperty(BeanLiveProperty beanLiveProperty) {
+        this.beanLiveProperty = beanLiveProperty;
     }
 
     @Override
@@ -34,13 +30,23 @@ public class BeanLiveTest  implements BeanNameAware,BeanFactoryAware,Application
     }
 
     @Override
-    public void destroy() throws Exception {
-        System.out.println("DisposableBean-destroy is-run");
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        System.out.println("BeanFactoryAware-setBeanFactory is-run");
+    }
+
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("ApplicationContextAware-setApplicationContext is-run");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("InitializingBean-afterPropertiesSet is-run");
+    }
+
+    public void initMethod() throws BeansException {
+        System.out.println("initMethod is-run");
     }
 
     @Override
@@ -56,18 +62,18 @@ public class BeanLiveTest  implements BeanNameAware,BeanFactoryAware,Application
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("ApplicationContextAware-setApplicationContext is-run");
-    }
-
-
-    public void initMethod() throws BeansException {
-        System.out.println("initMethod is-run");
+    public void destroy() throws Exception {
+        System.out.println("DisposableBean-destroy is-run");
     }
 
     public void destroyMethod() throws BeansException {
         System.out.println("destroyMethod is-run");
     }
+
+    public static void main(String[] args) {
+        System.out.println("main is run");
+    }
+
 
 
 }

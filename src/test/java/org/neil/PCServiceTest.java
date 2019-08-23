@@ -1,9 +1,11 @@
 package org.neil;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
+import org.neil.dao.PCDao;
 import org.neil.domain.PC;
 import org.neil.service.PCService;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.Page;
 
 /**
@@ -12,8 +14,17 @@ import com.github.pagehelper.Page;
  */
 public class PCServiceTest extends BaseTest {
 
-    @Autowired
+    @Resource
     PCService pcService;
+
+    @Resource
+    private PCDao pcDao;
+
+
+    @Test
+    public void getByIdTest() {
+        PC byId = pcService.getById(5);
+    }
 
     @Test
     public void pageTest() {

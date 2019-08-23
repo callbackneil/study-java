@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @date 2018/6/28
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:WEB-INF/spring-servlet.xml"})
+@ContextConfiguration(locations = {"classpath*:WEB-INF/spring-servlet.xml"})
 public class BaseTest {
 
     @Autowired

@@ -1,4 +1,4 @@
-package org.neil.dataStructure;
+package org.neil.datastructures;
 
 /**
  * Created by zhangzhen on 2019/6/27.
@@ -77,7 +77,7 @@ public class OneWayEntry<T> {
         this.root = entry;
     }
 
-    private class Entry<T>{
+    class Entry<T> {
 
         private T t;
         private Entry<T> next;

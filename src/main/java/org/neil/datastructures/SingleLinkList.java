@@ -8,12 +8,6 @@ public class SingleLinkList<T> {
 
 
     private Node<T> node;
-
-
-
-
-
-
     /**
      * 节点
      * @param <T>

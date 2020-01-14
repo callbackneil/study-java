@@ -26,8 +26,10 @@ public class JavaNio {
 
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
             // 6、采用轮询的方式，查询获取“准备就绪”的注册过的操作
+            // selector.select()方法查询活动的事件  没有的话就一直阻塞
             while (selector.select() > 0) {
                 // 7、获取当前选择器中所有注册的选择键（“已经准备就绪的操作”）
+                //  selector.selectedKeys() 获取所有活动的事件
                 Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
                 while (selectedKeys.hasNext()) {
                     // 8、获取“准备就绪”的时间

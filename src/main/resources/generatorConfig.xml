@@ -4,21 +4,24 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <classPathEntry
-            location="/Users/user/path/to/local/repo/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar"/>
+            location="/Users/neil/.m2/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar"/>
     <context id="my" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressDate" value="false"/>
-            <property name="suppressAllComments" value="true"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <commentGenerator type="org.neil.util.MyCommentGenerator">
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
-                        userId="root" password="134ojdon"/>
+                        userId="root" password="134Ojdon">
+            <property name="useInformationSchema" value="true" />
+        </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.neil.demo.model"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+
         <sqlMapGenerator targetPackage="com.neil.demo.mapper"
                          targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
@@ -28,7 +31,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="tbk_org" domainObjectName="TbkOrgDO"
+        <table tableName="tq_user_directory_crossfeature" domainObjectName="UserDirectoryCrossfeature"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -37,38 +40,3 @@
 
     </context>
 </generatorConfiguration>
-
-
-        <!--<?xml version="1.0" encoding="UTF-8"?>-->
-        <!--<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTDMyBatis Generator Configuration 1.0//EN"-->
-        <!--"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
-        <!--<generatorConfiguration >-->
-        <!--<context id="mysqlTables" targetRuntime="MyBatis3">-->
-        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
-        <!--connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"-->
-        <!--userId="root" password="root1234"/>-->
-        <!--     &lt;!&ndash;指定生成的类型为java类型，避免数据库中number等类型字段 &ndash;&gt;-->
-        <!--<javaTypeResolver>-->
-        <!--<property name="forceBigDecimals" value="false"/>-->
-        <!--</javaTypeResolver>-->
-        <!--     &lt;!&ndash;自动生成的实体的存放包路径 &ndash;&gt;-->
-        <!--<javaModelGenerator targetPackage="org.neil.entity.auto"-->
-        <!--targetProject="src/main/java">-->
-        <!--<property name="enableSubPackages" value="true"/>-->
-        <!--<property name="trimStrings" value="true"/>-->
-        <!--</javaModelGenerator>-->
-        <!--     &lt;!&ndash;自动生成的*Mapper.xml文件存放路径 &ndash;&gt;-->
-        <!--<sqlMapGenerator targetPackage="org.neil.dao.auto.mysql" targetProject="src/main/java">-->
-        <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</sqlMapGenerator>-->
-        <!--     &lt;!&ndash;自动生成的*Mapper.java存放路径 &ndash;&gt;-->
-        <!--<javaClientGenerator type="XMLMAPPER"-->
-        <!--targetPackage="org.neil.dao.auto" targetProject="src/main/java">-->
-        <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</javaClientGenerator>-->
-        <!--<table tableName="pc" domainObjectName="PCDO" enableCountByExample="false" enableUpdateByExample="false"-->
-        <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-        <!--</table>-->
-        <!--</context>-->
-        <!--</generatorConfiguration>-->
-

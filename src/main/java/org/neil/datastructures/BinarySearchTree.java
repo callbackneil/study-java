@@ -1,8 +1,6 @@
 package org.neil.datastructures;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 二叉查找树
@@ -266,6 +264,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return tierIterate2(root);
     }
 
+    /**
+     * 层序遍历
+     *
+     * @return
+     */
+    public List<T> tierIterateWithQueue() {
+        List<T> list = new ArrayList<>();
+        Queue<BinaryNode<T>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            BinaryNode<T> binaryNode = queue.poll();
+            list.add(binaryNode.t);
+            if(binaryNode.left != null){
+                queue.offer(binaryNode.left);
+            }
+            if(binaryNode.right != null){
+                queue.offer(binaryNode.right);
+            }
+        }
+
+
+
+        return list;
+    }
+
     private List<T> tierIterate2(BinaryNode<T> node) {
         List<T> list = new ArrayList<>();
         if (node == null) {
@@ -332,6 +355,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
      */
     public List<T> preIterate() {
         return iterate(root, PRE);
+    }
+
+    /**
+     * 前序遍历
+     *
+     * @return
+     */
+    public List<T> preIterateWithStack() {
+        List<T> list = new ArrayList<>();
+        Stack<BinaryNode<T>> stack = new Stack<>();
+        BinaryNode<T> binaryNode = root;
+        while (binaryNode !=null || !stack.isEmpty()){
+            // 如果当前节点不为null 输出当前节点  并把其左孩子入栈  直到遇到没有左孩子的节点 退出循环
+            while (binaryNode != null){
+                list.add(binaryNode.t);
+                stack.push(binaryNode);
+                binaryNode = binaryNode.left;
+            }
+            // 如果当前节点没有左孩子  将该节点出栈 然后输出右孩子
+            if (!stack.isEmpty()){
+                binaryNode = stack.pop();
+                binaryNode = binaryNode.right;
+            }
+        }
+        return list;
     }
 
 
